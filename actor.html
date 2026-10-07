@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Part 2: Descriptive title and header -->
     <title>Actors by Obora Stephen Efurhievwe</title>
-
+    
 </head>
 <body>
     <h1>Actors by Obora Stephen Efurhievwe</h1>
 
-    <!-- Part 3: Actor Form -->
+    <!-- Part 3: Actor Form and result display -->
     <div>
         <label>Peter Pan <input type="password" id="secretActor" value="Robin Williams"></label><br>
         <label>Who is the actor <input type="text" id="guessInput"></label><br>
@@ -15,14 +16,13 @@
         <p id="resultDisplay"></p>
     </div>
 
-    <!-- Part 4: Image Switcher with your actual images -->
+    <!-- Part 4: Image Switcher using your local images -->
     <div>
         <img src="eclair.jpg" id="foodImage" width="150" height="150" onclick="updatePic()">
     </div>
 
-    
     <script>
-        // Global variables for Part 3
+        // Part 3: Global variables for correct and incorrect counts
         let correct = 0;
         let notCorrect = 0;
 
@@ -41,7 +41,7 @@
             document.getElementById("resultDisplay").innerHTML = "Correct: " + correct + ", Not Correct: " + notCorrect;
         }
 
-        // Global variable for Part 4
+        // Part 4: Global variable and switch function for images
         let usePic = 1;
 
         function updatePic() {

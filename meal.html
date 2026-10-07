@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Part 7: Title and header -->
     <title>Obora Stephen Efurhievwe meal planner</title>
 </head>
 <body>
     <h1>Obora Stephen Efurhievwe meal planner</h1>
 
-    <!-- Part 7: Checkbox Form -->
+    <!-- Part 7: Checkbox form group -->
     <div>
         <form>
             <label><input type="checkbox" id="breakfast" value="True"> Breakfast</label>
@@ -17,7 +18,7 @@
         </form>
     </div>
 
-    <!-- Part 8: Cuisine & Beverage Form -->
+    <!-- Part 8: Cuisine and beverage form -->
     <div>
         <form>
             <label>Enter cuisine type <input type="text" id="cuisineType" value="Italian"></label><br>
@@ -29,6 +30,7 @@
     <p id="mealResult"></p>
 
     <script>
+        // Part 7: Global meal plan object and choices function
         let my_meal_plan = {};
 
         function choices() {
@@ -40,6 +42,7 @@
             document.getElementById("mealResult").innerHTML = JSON.stringify(my_meal_plan);
         }
 
+        // Part 8: Update meal function with cuisine and beverage properties
         function updateMeal() {
             my_meal_plan["cuisine"] = document.getElementById("cuisineType").value;
             my_meal_plan["beverage"] = document.getElementById("beverageChoice").value;

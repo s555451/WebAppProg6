@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Part 5: Title and header -->
     <title>Obora Stephen Efurhievwe sales computation</title>
 </head>
 <body>
     <h1>Obora Stephen Efurhievwe sales computation</h1>
 
-    <!-- Part 5 Inputs -->
+    <!-- Part 5: Four input elements for pricing and discounts -->
     <div>
         <label>Enter number items <input type="number" id="numberItems" value="1"></label><br>
         <label>Enter the cost of one item <input type="number" id="itemCost" value="20.0"></label><br>
@@ -15,7 +16,7 @@
         <button onclick="doDiscount()">Show costs</button>
     </div>
 
-    <!-- Part 6 Radio Buttons -->
+    <!-- Part 6: Radio button group for operations -->
     <div>
         <form>
             <label><input type="radio" name="op" value="mul" onclick="chooseOp()"> product</label>
@@ -27,6 +28,7 @@
     <p id="costResult"></p>
 
     <script>
+        // Part 5: Looping computation function
         function doDiscount() {
             let num = parseFloat(document.getElementById("numberItems").value);
             let cost = parseFloat(document.getElementById("itemCost").value);
@@ -52,6 +54,7 @@
             document.getElementById("costResult").innerHTML = "Costs are: " + costs;
         }
 
+        // Part 6: Radio button calculation function
         function chooseOp() {
             let count = parseFloat(document.getElementById("numberItems").value);
             let discountAt = parseFloat(document.getElementById("numberForDiscount").value);
