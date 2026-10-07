@@ -1,66 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sales Computation - Obora Efurhievwe</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Obora Stephen Efurhievwe sales computation</title>
 </head>
-<body class="container my-4">
+<body>
+    <h1>Obora Stephen Efurhievwe sales computation</h1>
 
-    <h2>Obora Efurhievwe sales computation</h2>
+    <!-- Part 5 Inputs -->
+    <div>
+        <label>Enter number items <input type="number" id="numberItems" value="1"></label><br>
+        <label>Enter the cost of one item <input type="number" id="itemCost" value="20.0"></label><br>
+        <label>Enter number to get discount <input type="number" id="numberForDiscount" value="10"></label><br>
+        <label>Enter the discount rate <input type="number" id="discountRate" value="0.15"></label><br>
+        <button onclick="doDiscount()">Show costs</button>
+    </div>
 
-    <form class="mb-4">
-        <div class="mb-3">
-            <label for="numberItems" class="form-label">Enter number items</label>
-            <input type="number" class="form-control" id="numberItems" value="1">
-        </div>
+    <!-- Part 6 Radio Buttons -->
+    <div>
+        <form>
+            <label><input type="radio" name="op" value="mul" onclick="chooseOp()"> product</label>
+            <label><input type="radio" name="op" value="add" onclick="chooseOp()"> sum</label>
+            <label><input type="radio" name="op" value="div" onclick="chooseOp()"> divide</label>
+        </form>
+    </div>
 
-        <div class="mb-3">
-            <label for="itemCost" class="form-label">Enter the cost of one item</label>
-            <input type="number" class="form-control" id="itemCost" value="20.0">
-        </div>
-
-        <div class="mb-3">
-            <label for="numberForDiscount" class="form-label">Enter number to get discount</label>
-            <input type="number" class="form-control" id="numberForDiscount" value="10">
-        </div>
-
-        <div class="mb-3">
-            <label for="DiscountRate" class="form-label">Enter the discount rate</label>
-            <input type="number" class="form-control" id="DiscountRate" value="0.15" step="0.01">
-        </div>
-
-        <input type="button" class="btn btn-primary" onclick="doDiscount()" value="Show costs">
-    </form>
-
-    <div id="result" class="alert alert-info">Costs will appear here.</div>
+    <p id="costResult"></p>
 
     <script>
         function doDiscount() {
-            let numItems = parseInt(document.getElementById("numberItems").value);
-            let costPerItem = parseFloat(document.getElementById("itemCost").value);
-            let discountAt = parseInt(document.getElementById("numberForDiscount").value);
-            let discountRate = parseFloat(document.getElementById("DiscountRate").value);
-
+            let num = parseFloat(document.getElementById("numberItems").value);
+            let cost = parseFloat(document.getElementById("itemCost").value);
+            let discountAt = parseFloat(document.getElementById("numberForDiscount").value);
+            let rate = parseFloat(document.getElementById("discountRate").value);
+            
             let costs = "";
 
             for (let i = 1; i <= 5; i++) {
-                let checkCount = numItems * i;
-                let totalCost = 0;
+                let checkCount = num * i;
+                let computedCost = 0;
 
                 if (checkCount <= discountAt) {
-                    totalCost = checkCount * costPerItem;
+                    computedCost = checkCount * cost;
                 } else {
-                    let normalCount = discountAt;
-                    let discountedCount = checkCount - discountAt;
-                    totalCost = (normalCount * costPerItem) + (discountedCount * costPerItem * (1 - discountRate));
+                    let normalPart = discountAt * cost;
+                    let discountedPart = (checkCount - discountAt) * cost * (1 - rate);
+                    computedCost = normalPart + discountedPart;
                 }
-
-                costs += "checkCount " + checkCount + " is " + totalCost + "; ";
+                costs += "checkCount " + checkCount + " is " + computedCost + "; ";
             }
 
-            document.getElementById("result").innerHTML = "Costs are: " + costs;
+            document.getElementById("costResult").innerHTML = "Costs are: " + costs;
+        }
+
+        function chooseOp() {
+            let count = parseFloat(document.getElementById("numberItems").value);
+            let discountAt = parseFloat(document.getElementById("numberForDiscount").value);
+            let radios = document.getElementsByName("op");
+            let selectedOp = "";
+
+            for (let r of radios) {
+                if (r.checked) {
+                    selectedOp = r.value;
+                    break;
+                }
+            }
+
+            let resultVal = 0;
+            let opText = "";
+
+            if (selectedOp === "mul") {
+                resultVal = count * discountAt;
+                opText = " times ";
+            } else if (selectedOp === "add") {
+                resultVal = count + discountAt;
+                opText = " plus ";
+            } else if (selectedOp === "div") {
+                resultVal = count / discountAt;
+                opText = " divided by ";
+            }
+
+            document.getElementById("costResult").innerHTML = count + opText + discountAt + " is " + resultVal;
         }
     </script>
-
+    
 </body>
 </html>

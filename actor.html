@@ -2,49 +2,33 @@
 <html>
 <head>
     <title>Actors by Obora Stephen Efurhievwe</title>
-    <!-- Optional: Bootstrap 5 for styling if desired -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
-<body class="container my-4">
+<body>
+    <h1>Actors by Obora Stephen Efurhievwe</h1>
 
-    <h2>Actors by Obora Stephen Efurhievwe</h2>
-
-    <!-- Part 3: Form Element -->
-    <form class="mb-4">
-        <div class="mb-3">
-            <label for="secretActor" class="form-label">Peter Pan</label>
-            <input type="password" class="form-control" id="secretActor" value="Robin Williams">
-        </div>
-
-        <div class="mb-3">
-            <label for="userGuess" class="form-label">Who is the actor</label>
-            <input type="text" class="form-control" id="userGuess" placeholder="Enter your guess">
-        </div>
-
-        <input type="button" class="btn btn-primary" onclick="checkActor()" value="Check the guess">
-    </form>
-
-    <!-- Result Display Element -->
-    <div id="result" class="alert alert-info">Counts will appear here.</div>
-
-    <!-- Part 4: Image Switcher Section -->
-    <hr class="my-4">
-    <h3>Food Image Switcher</h3>
-    <div class="mb-3">
-        <!-- Replace 'eclair.jpg' with one of your actual food images from Assignment 5 -->
-        <img id="foodImage" src="eclair.jpg" alt="Food" style="width: 150px; height: 150px; object-fit: cover; cursor: pointer;" onclick="updatePic()">
+    <!-- Part 3: Actor Form -->
+    <div>
+        <label>Peter Pan <input type="password" id="secretActor" value="Robin Williams"></label><br>
+        <label>Who is the actor <input type="text" id="guessInput"></label><br>
+        <button onclick="checkActor()">Check the guess</button>
+        <p id="resultDisplay"></p>
     </div>
 
-    <!-- JavaScript Section -->
+    <!-- Part 4: Image Switcher with your actual images -->
+    <div>
+        <img src="eclair.jpg" id="foodImage" width="150" height="150" onclick="updatePic()">
+    </div>
+
+    
     <script>
-        // Part 3 Global Variables
+        // Global variables for Part 3
         let correct = 0;
         let notCorrect = 0;
 
         function checkActor() {
             let secret = document.getElementById("secretActor").value;
-            let guess = document.getElementById("userGuess").value;
-            let resDiv = document.getElementById("result");
+            let guess = document.getElementById("guessInput").value;
 
             if (guess === secret) {
                 correct++;
@@ -54,10 +38,10 @@
                 alert("Better luck next time");
             }
 
-            resDiv.innerHTML = "Correct: " + correct + " | Wrong: " + notCorrect;
+            document.getElementById("resultDisplay").innerHTML = "Correct: " + correct + ", Not Correct: " + notCorrect;
         }
 
-        // Part 4 Global Variable and Function
+        // Global variable for Part 4
         let usePic = 1;
 
         function updatePic() {
